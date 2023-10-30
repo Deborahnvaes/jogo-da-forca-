@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./Styles/styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Jogo da Forca Atualizado</title>
+</head>
+<body>
+    
+    <div class="container">
+        <header class="headerContainer"> JOGO DA FORCA - JOGUE SOZINHO OU DESAFIE SEUS AMIGOS.
+        </header>
+       
+        <div class="d-flex">
+            <div class="containerImagem">
+                <div id="imagem"></div>
+            </div>
+                    <!-- Vou criar um array com as letras que eu vou criar os botoes
+                    depois vou pegar a div onde os botoes serao criados e em seguida criar os botoes fazendo um loop com forEcah-->
+            <div class="d-flex flex-column justify-content-end">
+                <div id="teclado" >
+                      <button id="tecla-A" class="teclas" onclick="verificaLetraEscolhida('A')">A</button>
+                        <button id="tecla-B" class="teclas" onclick="verificaLetraEscolhida('B')">B</button>
+                        <button id="tecla-C" class="teclas" onclick="verificaLetraEscolhida('C')">C</button>
+                        <button id="tecla-D" class="teclas" onclick="verificaLetraEscolhida('D')">D</button>
+                        <button id="tecla-E" class="teclas" onclick="verificaLetraEscolhida('E')">E</button>
+                        <button id="tecla-F" class="teclas" onclick="verificaLetraEscolhida('F')">F</button>
+                        <button id="tecla-G" class="teclas" onclick="verificaLetraEscolhida('G')">G</button>
+                        <button id="tecla-H" class="teclas" onclick="verificaLetraEscolhida('H')">H</button>
+                        <button id="tecla-I" class="teclas" onclick="verificaLetraEscolhida('I')">I</button>
+                        <button id="tecla-J" class="teclas" onclick="verificaLetraEscolhida('J')">J</button>
+                        <button id="tecla-K" class="teclas" onclick="verificaLetraEscolhida('K')">K</button>
+                        <button id="tecla-L" class="teclas" onclick="verificaLetraEscolhida('L')">L</button>
+                        <button id="tecla-M" class="teclas" onclick="verificaLetraEscolhida('M')">M</button>
+                        <button id="tecla-N" class="teclas" onclick="verificaLetraEscolhida('N')">N</button>
+                        <button id="tecla-O" class="teclas" onclick="verificaLetraEscolhida('O')">O</button>
+                        <button id="tecla-P" class="teclas" onclick="verificaLetraEscolhida('P')">P</button>
+                        <button id="tecla-Q" class="teclas" onclick="verificaLetraEscolhida('Q')">Q</button>
+                        <button id="tecla-R" class="teclas" onclick="verificaLetraEscolhida('R')">R</button>
+                        <button id="tecla-S" class="teclas" onclick="verificaLetraEscolhida('S')">S</button>
+                        <button id="tecla-T" class="teclas" onclick="verificaLetraEscolhida('T')">T</button>
+                        <button id="tecla-U" class="teclas" onclick="verificaLetraEscolhida('U')">U</button>
+                        <button id="tecla-V" class="teclas" onclick="verificaLetraEscolhida('V')">V</button>
+                        <button id="tecla-X" class="teclas" onclick="verificaLetraEscolhida('X')">X</button>
+                        <button id="tecla-W" class="teclas" onclick="verificaLetraEscolhida('W')">W</button>
+                        <button id="tecla-Y" class="teclas" onclick="verificaLetraEscolhida('Y')">Y</button>
+                        <button id="tecla-Z" class="teclas" onclick="verificaLetraEscolhida('Z')">Z</button> 
+                </div>
+
+               
+
+                 <!-- verificar div -->
+                <div id="palavra-secreta"></div>
+            
+                <!-- verificar div -->
+                <div id="categoria"></div>
+
+                <div class="d-flex justify-content-around align-items-lg-baseline  ">
+                    <button type="button" id="abreModalAddPalavra" onclick="addPalavraModal()" class="btn btn-outiline-primary --bs-info-bg-subtle">Nova Palavra</button>
+                    <button id="btnReiniciar" onclick="reiniciar()" class="btn btn-outiline-primary --bs-info-bg-subtle ">Atualizar Palavra</button>
+                </div>
+            </div>
+
+            <div>
+                </div>
+       </div>
+        
+            <footer class="text-dark justify-content-center">
+            <p>&copy; 2023 Déborah Novaes. Todos os direitos reservados.</p>
+        </footer>
+
+       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="reiniciar()">Fechar</button>
+                </div>
+            </div>
+            </div>
+        </div>
+               <!--Modal adcionar nova palavra-->
+               <div id="modal-alerta" class="modal-container">
+                <div class="modal-add-palavra">
+                    <div class="modal-header-add-palavra" id="modal-titulo">
+                        <button type="button" class="close" data-dismiss="modal" id="fecharModal" aria-label="Close" onclick="fecharModal()">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h2>ADCIONE UMA PALAVRA</h2>
+                    </div>
+    
+                <div class="modal-body-add-palavra" id="modal-mensagem">
+                    <input type="password" id="addPalavra" placeholder="Palavra Nova"  required>
+                    <input type="text" id="addCategoria" placeholder="Categoria da Palavra" required>
+                    <button onclick="adicionarPalavra()">ADICIONAR</button>
+                </div>
+                </div>
+            </div>
+    </div>
+
+    <script src="./main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

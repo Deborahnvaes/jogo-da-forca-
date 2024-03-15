@@ -27,4 +27,4 @@ Personalização Total: Crie suas próprias palavras e categorias para um jogo �
 
 
 
-#### *Jogue Clicando aqui* ➡️ [ https://deborahnvaes.github.io/jogo-da-forca-/](http://localhost/)。
+#### *Jogue Clicando aqui* ➡️ https://jogodaforca-fap.netlify.app/
